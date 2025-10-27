@@ -1,0 +1,41 @@
+name: Web Analysis Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: 'Website URL to analyze'
+        required: true
+        default: 'https://example.com'
+      analysis_type:
+        description: 'Type of analysis'
+        required: true
+        default: 'full'
+        type: choice
+        options:
+          - full
+          - performance
+          - accessibility
+          - seo
+          - security
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: |
+          npm init -y
+          npm install puppeteer cheerio axios lighthouse
+      - name: Run analysis
+        run: |
+          node <<'EOF'
+          const url = process.argv[2];
+          const type = process.argv[3];
+          console.log(`🔎 Running ${type} analysis on ${url} …`);
+          // 👇 put your real analysis code here
+          EOF ${{ github.event.inputs.url }} ${{ github.event.inputs.analysis_type }}

@@ -1,0 +1,7 @@
+theme: jekyll-theme-minimal
+title: Web Evolver Pro
+description: AI‑powered website analysis demo
+show_downloads: false
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
