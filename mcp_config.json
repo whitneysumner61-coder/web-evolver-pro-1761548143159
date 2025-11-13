@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "/opt/node22/bin/mcp-server-filesystem",
+      "args": ["/home/user/web-evolver-pro-1761548143159"],
+      "env": {}
+    }
+  }
+}
